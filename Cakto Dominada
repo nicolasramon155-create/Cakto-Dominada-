@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cakto Dominada - Faça Sua Primeira Venda em 72 Horas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e Configurações Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Cores da Marca - Tema Cakto */
+        :root {
+            --primary: #FF6B35; /* Laranja Cakto */
+            --secondary: #00C9B7; /* Turquesa */
+            --accent: #FFD166; /* Amarelo */
+            --dark: #2D3047; /* Azul escuro */
+            --light: #F9FAFB;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #3A3F5B 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(rgba(45, 48, 71, 0.9), rgba(45, 48, 71, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, #FF8B35 100%);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
+        }
+        
+        .cta-button.secondary {
+            background: linear-gradient(135deg, var(--secondary) 0%, #00E6D4 100%);
+            box-shadow: 0 10px 25px rgba(0, 201, 183, 0.3);
+        }
+        
+        /* Seção Plataforma */
+        .platform-section {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .platform-comparison {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .platform-item {
+            padding: 30px;
+            border-radius: 15px;
+            width: 280px;
+        }
+        
+        .platform-item.cakto {
+            background: linear-gradient(135deg, var(--primary), #FF8B35);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.2);
+        }
+        
+        .platform-item.other {
+            background: #f1f1f1;
+            color: #666;
+        }
+        
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Módulos */
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .module-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .module-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .module-card h3 i {
+            color: var(--primary);
+        }
+        
+        .module-card ul {
+            list-style-type: none;
+        }
+        
+        .module-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f1f1;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .module-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* Seção Cakto Especifica */
+        .cakto-features {
+            background: linear-gradient(135deg, #E9F7FF 0%, #FFFFFF 100%);
+            padding: 80px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Preços */
+        .pricing {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .price-main {
+            font-size: 3.5rem;
+            color: var(--dark);
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .price-installments {
+            color: #6B7280;
+            margin-bottom: 30px;
+        }
+        
+        .guarantee {
+            background: var(--secondary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        /* Depoimentos */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        /* FAQ */
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: #D1D5DB;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            color: #9CA3AF;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .pricing {
+                padding: 30px 20px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .platform-comparison {
+                flex-direction: column;
+            }
+            
+            .platform-item.cakto {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Cakto<span>Dominada</span></a>
+            <div>
+                <a href="#oferta" class="cta-button">QUERO VENDER NA CAKTO</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Faça Sua <span class="highlight">Primeira Venda na Cakto</span> em Apenas 72 Horas</h1>
+            <p>Domine a plataforma de checkout mais simples e eficiente do mercado. Método comprovado por +200 alunos.</p>
+            <div>
+                <a href="#oferta" class="cta-button">COMEÇAR AGORA</a>
+                <a href="#comparacao" class="cta-button secondary">POR QUE A CAKTO?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparação de Plataformas -->
+    <section id="comparacao" class="platform-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por Que a Cakto Converte Mais?</h2>
+                <p>Comparação direta com outras plataformas</p>
+            </div>
+            
+            <div class="platform-comparison">
+                <div class="platform-item other">
+                    <div class="platform-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Outras Plataformas</h3>
+                    <ul style="text-align: left; margin-top: 20px;">
+                        <li>Checkout complexo</li>
+                        <li>Muitos passos</li>
+                        <li>Alta taxa de abandono</li>
+                        <li>Configuração demorada</li>
+                    </ul>
+                </div>
+                
+                <div class="platform-item cakto">
+                    <div class="platform-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Cakto</h3>
+                    <ul style="text-align: left; margin-top: 20px;">
+                        <li>Checkout em 1 página</li>
+                        <li>Conversão 37% maior</li>
+                        <li>Pix integrado nativo</li>
+                        <li>Setup em 5 minutos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo -->
+    <section id="conteudo" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Que Você Vai Dominar na Cakto</h2>
+                <p>Método passo a passo das maiores autoridades em vendas digitais</p>
+            </div>
+            
+            <div class="modules">
+                <div class="module-card">
+                    <h3><i class="fas fa-brain"></i> Módulo 1: Mentalidade Cakto</h3>
+                    <ul>
+                        <li>Filosofia do checkout simples</li>
+                        <li>Erros fatais de iniciantes na Cakto</li>
+                        <li>Mindset "venda por link"</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3><i class="fas fa-shopping-cart"></i> Módulo 2: Checkout Perfeito</h3>
+                    <ul>
+                        <li>Configuração passo a passo</li>
+                        <li>Os campos que aumentam conversão</li>
+                        <li>Design minimalista que vende</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3><i class="fas fa-chart-line"></i> Módulo 3: Upsells na Cakto</h3>
+                    <ul>
+                        <li>Upsell timing perfeito</li>
+                        <li>Downsell de recuperação</li>
+                        <li>Estratégia de cupons vencedora</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3><i class="fas fa-link"></i> Módulo 4: Venda por Link</h3>
+                    <ul>
+                        <li>Método WhatsApp + Cakto</li>
+                        <li>Stories que convertem em vendas</li>
+                        <li>Anúncios diretos para checkout</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3><i class="fas fa-users"></i> Módulo 5: Afiliados Cakto</h3>
+                    <ul>
+                        <li>Sistema de afiliados simplificado</li>
+                        <li>Dashboard de performance</li>
+                        <li>Comunicação eficiente</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3><i class="fas fa-robot"></i> Módulo 6: Automações</h3>
+                    <ul>
+                        <li>E-mails automáticos da Cakto</li>
+                        <li>Sequência pós-compra</li>
+                        <li>Suporte que encanta</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos Específicos Cakto -->
+    <section class="cakto-features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recursos Exclusivos da Cakto que Você Vai Dominar</h2>
+                <p>Funcionalidades que fazem a diferença na conversão</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-qrcode"></i>
+                    <h3>Pix Automático</h3>
+                    <p>Configuração do Pix com QR Code e copia e cola automático</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Checkout Mobile First</h3>
+                    <p>Otimizado para vendas no celular (70% das conversões)</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Setup em 5 Minutos</h3>
+                    <p>Da criação do produto à primeira venda em menos de 5 minutos</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Dashboard Simples</h3>
+                    <p>Controle de vendas, afiliados e métricas em um só lugar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bônus -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bônus Exclusivos</h2>
+                <p>Para você acelerar ainda mais seus resultados</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Templates Prontos</h3>
+                    <p>Checkouts Cakto otimizados para importar</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Scripts de Venda</h3>
+                    <p>Roteiros para Stories, WhatsApp e vídeos</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Comunidade VIP</h3>
+                    <p>Acesso ao grupo de alunos no Telegram</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Calculadora de ROI</h3>
+                    <p>Planilha para calcular lucro e investimento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços e Oferta -->
+    <section id="oferta" class="section">
+        <div class="container">
+            <div class="pricing">
+                <div class="section-title">
+                    <h2>Investimento</h2>
+                    <p>Comece hoje e tenha suporte até sua primeira venda na Cakto</p>
+                </div>
+                
+                <div class="price-main">R$ 197</div>
+                <div class="price-installments">ou 12x de R$ 22 no cartão</div>
+                
+                <div class="guarantee">
+                    <i class="fas fa-shield-alt"></i> Garantia Incondicional de 7 Dias
+                </div>
+                
+                <p style="margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Se em 7 dias você não fizer pelo menos UMA venda na Cakto aplicando o método, devolvemos 100% do seu investimento.
+                </p>
+                
+                <!-- BOTÃO DA CAKTO AQUI -->
+                <a href="https://pay.cakto.com.br/uh5xsrb_745978" class="cta-button" target="_blank" id="buy-button-cakto" style="font-size: 1.3rem; padding: 20px 50px;">
+                    <i class="fas fa-bolt"></i> QUERO MINHA PRIMEIRA VENDA NA CAKTO
+                </a>
+                
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #6B7280;">
+                    <i class="fas fa-lock"></i> Pagamento 100% seguro via Cakto • Pix, cartão e PayPal
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quem Já Vende na Cakto</h2>
+                <p>Resultados reais de alunos que aplicaram o método</p>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <p>"A Cakto simplificou tudo! Em 24 horas configurei meu produto e fiz 3 vendas pelo WhatsApp. O checkout é simplesmente perfeito!"</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente">
+                        <div>
+                            <h4>Mariana Lima</h4>
+                            <span>Produto: E-book de Receitas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"O método de upsell da Cakto aumentou meu ticket médio em 40%. Agora cada venda vale muito mais com as ofertas extras."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
+                        <div>
+                            <h4>Roberto Santos</h4>
+                            <span>Produto: Curso de Excel</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"Sou afiliada e a Cakto tem o melhor sistema de comissões. Interface simples e pagamentos sempre no dia correto. Recomendo!"</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente">
+                        <div>
+                            <h4>Carla Oliveira</h4>
+                            <span>Afiliada Top</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas sobre a Cakto e o método</p>
+            </div>
+            
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Preciso ter site para usar a Cakto?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! A Cakto é perfeita para quem não tem site. Você vende apenas com um link que pode compartilhar no WhatsApp, Instagram, e-mail ou qualquer lugar.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>A Cakto tem taxa de adesão ou mensalidade?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! A Cakto só cobra taxa sobre as vendas realizadas (pay per sale). Você começa gratuitamente e só paga quando vender.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como recebo o dinheiro das vendas?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A Cakto faz repasses automáticos para sua conta bancária. Pix é creditado em até 1 dia útil, cartão em até 14 dias.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso usar a Cakto se já tenho produtos em outra plataforma?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Muitos alunos usam a Cakto como checkout adicional para produtos específicos ou ofertas especiais, justamente pela alta conversão.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Garantia</a>
+                <a href="#">Contato</a>
+                <a href="#">Tornar-se Afiliado</a>
+            </div>
+            
+            <p style="max-width: 600px; margin: 30px auto; opacity: 0.8;">
+                Este site não é afiliado à Cakto. É um produto independente que ensina a usar a plataforma. Cakto é uma marca registrada.
+            </p>
+            
+            <div class="copyright">
+                © 2023 Cakto Dominada. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Toggle active class
+                answer.classList.toggle('active');
+                
+                // Change icon
+                if (answer.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+        
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contador de oferta (opcional)
+        function createCountdown() {
+            // Implementar contador de tempo limitado se quiser
+            console.log("Contador opcional para urgência");
+        }
+        
+        // Tracking do botão de compra
+        document.getElementById('buy-button-cakto').addEventListener('click', function() {
+            // Adicionar tracking aqui (Facebook Pixel, Google Analytics, etc.)
+            console.log("Redirecionando para checkout da Cakto");
+            
+            // Exemplo de tracking com gtag
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-123456789/AbC-D_efG-h12',
+                    'value': 197.00,
+                    'currency': 'BRL',
+                    'transaction_id': ''
+                });
+            }
+        });
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            createCountdown();
+        });
+    </script>
+</body>
+</html>
